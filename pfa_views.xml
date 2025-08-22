@@ -1,1 +1,37 @@
-nn
+<odoo>
+    <record id="action_pfa_model" model="ir.actions.act_window">
+        <field name="name">PFA Models</field>
+        <field name="res_model">pfa.model</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="view_pfa_model_tree" model="ir.ui.view">
+        <field name="name">pfa.model.tree</field>
+        <field name="model">pfa.model</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="description"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_pfa_model_form" model="ir.ui.view">
+        <field name="name">pfa.model.form</field>
+        <field name="model">pfa.model</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="description"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <menuitem id="menu_pfa_root" name="PFA"/>
+    <menuitem id="menu_pfa_model" name="PFA Models" parent="menu_pfa_root" action="action_pfa_model"/>
+</odoo>
+
