@@ -1,8 +1,9 @@
 from odoo import models, fields
 
-class PfaModel(models.Model):
-    _name = 'pfa.model'
-    _description = 'PFA Model Example'
+class PfaStudent(models.Model):
+    _name = 'pfa.student'
+    _description = 'Étudiant PFA'
 
-    name = fields.Char(string="Name", required=True)
-    description = fields.Text(string="Description")
+    name = fields.Char(string="Nom", required=True)
+    age = fields.Integer(string="Âge")
+    email = fields.Char(string="Email")

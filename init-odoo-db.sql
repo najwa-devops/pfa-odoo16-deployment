@@ -1,0 +1,1 @@
+CREATE DATABASE odoo OWNER odoo;
