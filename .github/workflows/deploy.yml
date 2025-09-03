@@ -2,23 +2,33 @@ name: Deploy Odoo to Azure VM
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - main  # ou ta branche principale
 
 jobs:
   deploy:
+    name: Deploy Odoo to Azure VM
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Deploy to Azure VM
+      - name: Set up SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.AZURE_VM_SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+
+      - name: SSH to Azure VM and deploy Odoo
         uses: appleboy/ssh-action@v1.0.3
         with:
-          host: ${{ secrets.AZURE_HOST }}
-          username: najwadevops
-          key: ${{ secrets.AZURE_SSH_KEY }}
+          host: ${{ secrets.AZURE_VM_HOST }}
+          username: ${{ secrets.AZURE_VM_USER }}
+          key: ${{ secrets.AZURE_VM_SSH_KEY }}
+          port: 22
           script: |
             cd ~/pfa-odoo16-deployment
-            git pull origin main
-            docker compose down
-            docker compose up -d --build
+            docker compose pull
+            docker compose up -d
+            docker compose ps
