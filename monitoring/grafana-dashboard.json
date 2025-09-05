@@ -1,1 +1,10 @@
-{}
+{
+  "annotations": {"list":[{"builtIn":1,"name":"Annotations & Alerts","type":"dashboard"}]},
+  "panels":[
+    {"type":"graph","title":"Odoo Availability","targets":[{"expr":"up{job='odoo'}","legendFormat":"{{instance}}"}]},
+    {"type":"graph","title":"Postgres Availability","targets":[{"expr":"up{job='postgres'}","legendFormat":"{{instance}}"}]}
+  ],
+  "title":"PFA Monitoring Dashboard",
+  "schemaVersion":30,
+  "version":1
+}
