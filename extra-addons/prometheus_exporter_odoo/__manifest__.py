@@ -15,7 +15,7 @@
         "views/ir_metric.xml",
     ],
     "installable": True,
-    "application": False,
+    "application": True,
     "auto_install": False,
     "images": ["images/screen.png"],
     "external_dependencies": {"python": ["prometheus_client"]},

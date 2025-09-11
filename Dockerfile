@@ -9,7 +9,8 @@ USER root
 RUN pip3 install --upgrade pip \
     && pip3 install --upgrade werkzeug==2.3.7 \
     && pip3 install --upgrade psycopg2-binary \
-    && pip3 install "MarkupSafe<2.1.0"
+    && pip3 install "MarkupSafe<2.1.0" \
+    && pip3 install prometheus_client
 
 # Définir le répertoire de travail
 WORKDIR /var/lib/odoo
